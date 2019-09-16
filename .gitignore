@@ -1,1 +1,11 @@
-node_modules
+node_modules/**/*
+.expo/*
+npm-debug.*
+*.log*
+.vscode
+.editorconfig
+.next/
+.DS_Store
+.lock
+*.tar
+.idea/
