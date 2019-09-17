@@ -1,4 +1,9 @@
-import { signIn } from '../../modules'
+import SignIn from '../../modules/signIn'
+import withData from '../../config/withData'
 
 
-export default signIn
+export default withData((props)=>{
+    return (
+        <SignIn {...props}></SignIn>
+    )
+})

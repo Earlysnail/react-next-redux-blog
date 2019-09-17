@@ -1,4 +1,8 @@
 import Home from '../../modules/home'
+import withData from '../../config/withData'
 
-
-export default Home
+export default  withData((props) => {
+    return(
+        <Home {...props}></Home>
+    )
+})
