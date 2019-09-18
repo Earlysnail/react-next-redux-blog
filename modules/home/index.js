@@ -11,6 +11,13 @@ class Home extends Component {
         return(
             <div className='home'>
                 my blog
+                <style global jsx>{`
+                body{
+                    margin: 0;
+                    padding: 0;
+                }
+                `}
+                </style>
             </div>
         )
     }
