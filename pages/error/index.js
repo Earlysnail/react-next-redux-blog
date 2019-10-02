@@ -1,8 +1,8 @@
-import Home from '../../modules/home'
+import Error from '../../modules/error'
 import withData from '../../config/withData'
 
 export default  withData((props) => {
     return(
-        <Home {...props}></Home>
+        <Error {...props}></Error>
     )
 })
