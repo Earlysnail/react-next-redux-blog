@@ -9,3 +9,4 @@ npm-debug.*
 .lock
 *.tar
 .idea/
+.next/cache/*
