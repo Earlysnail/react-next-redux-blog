@@ -1,9 +1,12 @@
 import Home from '../modules/home'
 import withData from '../config/withData'
+import { Layout } from '../modules/common/Layout'
 
-export  default withData((props) => {
+export default withData((props) => {
     return (
-        <Home {...props}></Home>
+        <Layout {...props}>
+            <Home {...props}></Home>
+        </Layout>
     )
 })
 

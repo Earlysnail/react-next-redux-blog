@@ -4,7 +4,7 @@ import { Layout } from '../../modules/common/Layout'
 
 export default  withData((props) => {
     return(
-        <Layout>
+        <Layout {...props}>
             <DrawPage {...props}></DrawPage>
         </Layout>
     )

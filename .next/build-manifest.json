@@ -4,10 +4,6 @@
     "static/development/dll/dll_211854493962a5c0c1a1.js.map"
   ],
   "pages": {
-    "/": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
     "/_app": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
@@ -16,7 +12,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/index": [
+    "/error": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/signIn": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

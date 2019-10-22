@@ -15,7 +15,7 @@ export function admin (state = {}, action = {}){
     switch(action.type){
         case DO_SIGN_IN_REQUEST: return Object.assign({}, state, { loading: true, error: null})
         case DO_SIGN_IN_SUCCESS: return Object.assign(
-                {}, 
+                {},
                 state, 
                 { data: Object.assign({}, state.data, { token: action.token, username: action.username, password: action.password})},
                 { loading: false, error: null }

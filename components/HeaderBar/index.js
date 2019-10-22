@@ -1,34 +1,32 @@
 import React, { Component } from 'react'
 import theme from '../theme'
-import {MENU} from '../../config/basicConfig'
+import { MENU } from '../../config/basicConfig'
 import { Router } from 'next/router'
-class HeaderBar extends Component{
-    constructor(props){
+class HeaderBar extends Component {
+    constructor(props) {
         super(props)
-        this.state = {
-           
-        }
+       
     }
-
-    render(){
-        const imgstyledefault = {height: '.26rem', padding: '0 .1rem 0 .3rem', marginTop: '.16rem'}
+    render() {
+        const imgstyledefault = { height: '.26rem', padding: '0 .1rem 0 .3rem', marginTop: '.16rem' }
         const logo = this.props.logo || '../../static/logo.png';
         const pageName = '博客主页';
-        // const curUrl = this.props.url && this.props.url.pathname
-        // const curUrlKeywords = curUrl && curUrl.split('/') || [];
-        // const curUrlKeyword = curUrlKeywords.length > 1 ? curUrlKeywords[1] : '/'
-        return(
+        const curUrl =  this.props.url;
+        const curUrlKeywords = curUrl && curUrl.split('/') || [];
+        const curUrlKeyword = curUrlKeywords.length > 1 ? curUrlKeywords[1] : '/' 
+        return (
             <div className="headerBar">
                 <img style={imgstyledefault} src={logo} className='left' ></img>
-                <artical className='left' >{ pageName }</artical>
+                <article className='left' >{pageName}</article>
                 <section className='headerBarRight right'>
                     <ul className='left'>{
                         MENU.map((item, iKey) => {
+                            const itemUrlKeywords = item.url && item.url.split('/') || [];
+                            const itemUrlKeyword = itemUrlKeywords.length > 1 ? itemUrlKeywords[1] : '/'
                             return (<li
-                                className={ item.mark ? 'left curLi' : 'left'}
-                                onClick={(ele) => {
-                                    let url = ele && ele.childrenMenus && ele.childrenMenus[0] && ele.childrenMenus[0].url
-                                    Router.push(url)
+                                className={ itemUrlKeyword == curUrlKeyword ? 'left curLi' : 'left'}
+                                onClick={() => {
+                                   // Router.push(item.url)
                                 }}
                                 key={iKey}>{item.title}</li>)
                         })

@@ -4,20 +4,23 @@ import { initStore } from '../config/store'
 
 export default function(Component){
     class Auth extends React.Component {
+        static async getInititalProps (ctx){
+        }
         constructor(props){
             super(props)
             this.store = initStore()
+            this.state = {}
         }
-        componentDidMount(){
-            // const url = document.location.pathname;
-            // this.setState({
-            //     url: url
-            // })
+        async UNSAFE_componentWillMount () {
+            const url = window.document.location.pathname;
+            this.setState({
+                url
+            })
         }
         render(){
             return(
                 <Provider store={this.store}>
-                    <Component url={'/'} />
+                    <Component url={this.state.url} />
                 </Provider>
             )
         }

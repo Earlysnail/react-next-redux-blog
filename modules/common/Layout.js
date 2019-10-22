@@ -8,11 +8,20 @@ class Layout extends Component{
 
         }
     }
-
+    async componentWillMount(){
+        this.doSignIn()
+    }
+    doSignIn = () => {
+        // let username = await localStorage.getItem('username');
+        // let token = await localStorage.getItem('token');
+        // if(this.props.authInfo && this.authInfo.token){
+            
+        // }
+    }
     render(){
         return(
             <main>
-                <HeaderBar></HeaderBar>
+                <HeaderBar url={this.props.url}></HeaderBar>
                 {
                     this.props.children
                 }

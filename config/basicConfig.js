@@ -3,32 +3,17 @@ const NAME_SPACE = {
 }
 const  MENU = [
     {
-        title: '电影',
-        url: '/movie',
-        childrenMenu: [
-            {
-                title: '搞笑',
-                url: '/movie/kids'
-            }
-        ]
+        title: '数据图',
+        url: '/draw',
+        childrenMenu: []
     },{
-        title: '文艺',
-        url: '/literature',
-        childrenMenu: [
-            {
-                title: '小说',
-                url: '/literature/novel'
-            }
-        ]
+        title: '登录',
+        url: '/signIn',
+        childrenMenu: []
     },{
-        title: '体育',
-        url: 'sports',
-        childrenMenu: [
-            {
-                title: '足球',
-                url: '/sports/soccer'
-            }
-        ]
+        title: '错误页面',
+        url: '/error',
+        childrenMenu: []
     }
 ];
 
