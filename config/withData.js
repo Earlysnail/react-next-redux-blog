@@ -8,10 +8,16 @@ export default function(Component){
             super(props)
             this.store = initStore()
         }
+        componentDidMount(){
+            // const url = document.location.pathname;
+            // this.setState({
+            //     url: url
+            // })
+        }
         render(){
             return(
                 <Provider store={this.store}>
-                    <Component/>
+                    <Component url={'/'} />
                 </Provider>
             )
         }

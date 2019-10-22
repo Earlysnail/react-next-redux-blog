@@ -184,5 +184,7 @@ class Draw extends Component {
     }
 }
 
-export default Draw
+export {
+    Draw
+} 
 
