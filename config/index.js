@@ -1,7 +1,7 @@
 import {NAME_SPACE} from './basicConfig'
 
 
-const API_SERVER = '140.143.148.207:8080'
+const API_SERVER = 'localhost:8000'
 
 export {
     NAME_SPACE,

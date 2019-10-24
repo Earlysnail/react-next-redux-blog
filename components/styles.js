@@ -29,9 +29,9 @@ export function style() {
                 }
             }
             body{
-                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+                font-family: PingFangSC-Regular, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
                 font-size: ${theme.fontsize};
-                background-color: #f2f2f2;
+                background-color: #F6F8FB;
                 color: ${theme.fontcolor};
                 font-weight: 300;
                 margin: 0;

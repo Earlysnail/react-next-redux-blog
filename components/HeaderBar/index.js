@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
 import theme from '../theme'
 import { MENU } from '../../config/basicConfig'
-import { Router } from 'next/router'
+import Router from 'next/router'
 class HeaderBar extends Component {
     constructor(props) {
         super(props)
-       
+
     }
     render() {
         const imgstyledefault = { height: '.26rem', padding: '0 .1rem 0 .3rem', marginTop: '.16rem' }
         const logo = this.props.logo || '../../static/logo.png';
         const pageName = '博客主页';
-        const curUrl =  this.props.url;
+        const curUrl = this.props.url;
         const curUrlKeywords = curUrl && curUrl.split('/') || [];
-        const curUrlKeyword = curUrlKeywords.length > 1 ? curUrlKeywords[1] : '/' 
+        const curUrlKeyword = curUrlKeywords.length > 1 ? curUrlKeywords[1] : '/'
         return (
             <div className="headerBar">
                 <img style={imgstyledefault} src={logo} className='left' ></img>
@@ -24,9 +24,9 @@ class HeaderBar extends Component {
                             const itemUrlKeywords = item.url && item.url.split('/') || [];
                             const itemUrlKeyword = itemUrlKeywords.length > 1 ? itemUrlKeywords[1] : '/'
                             return (<li
-                                className={ itemUrlKeyword == curUrlKeyword ? 'left curLi' : 'left'}
+                                className={itemUrlKeyword == curUrlKeyword ? 'left curLi' : 'left'}
                                 onClick={() => {
-                                   // Router.push(item.url)
+                                    Router.push(item.url)
                                 }}
                                 key={iKey}>{item.title}</li>)
                         })

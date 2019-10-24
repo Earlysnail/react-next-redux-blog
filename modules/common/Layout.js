@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { HeaderBar } from '../../components'
 import { style } from '../../components/styles'
 class Layout extends Component{
@@ -11,12 +12,9 @@ class Layout extends Component{
     async componentWillMount(){
         this.doSignIn()
     }
-    doSignIn = () => {
-        // let username = await localStorage.getItem('username');
-        // let token = await localStorage.getItem('token');
-        // if(this.props.authInfo && this.authInfo.token){
-            
-        // }
+    async doSignIn() {
+        let username = await localStorage.getItem('username');
+        let token = await localStorage.getItem('token');
     }
     render(){
         return(
@@ -33,7 +31,15 @@ class Layout extends Component{
     }
 }
 
-
-export {
-    Layout
+const mapStateToProps = ((state) => {
+    return {
+        authInfo: state.admin.data
+    }
+})
+const mapDispatchToProps = {
 }
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Layout)

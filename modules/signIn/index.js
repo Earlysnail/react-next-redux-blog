@@ -4,26 +4,25 @@ import { doSignIn } from '../../ducks'
 import Router from 'next/router'
 
 class SignIn extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
-           username: '',
-           password: ''
+            username: '',
+            password: ''
         }
     }
-    componentDidMount(){
-       
+    componentDidMount() {
+
     }
     async submit() {
-        console.log("登录中...");
         const username = this.state.username;
         const password = this.state.password;
-        const error = await this.props.doSignIn({username, password})
-        if(error.code){
-            console.log(':',error)
+        const data = await this.props.doSignIn({ username, password })
+        if (data.code == 1) {
+            console.log(data.message)
             return
         }
-        Router.push('/error')
+        Router.push('/radar')
     }
     render() {
         return (
@@ -36,11 +35,11 @@ class SignIn extends Component {
                         </dl>
                         <dl>
                             <dt><span>密&nbsp;&nbsp;&nbsp;码：</span><input type='password' value={this.state.password} onChange={(e) => this.setState({ password: e.target.value })} ></input></dt>
-                        </dl> 
+                        </dl>
                         <dl>
-                            <dt><button style={{width: '2rem'}} onClick={()=>this.submit()}>确定</button></dt>
-                        </dl> 
-                    </section> 
+                            <dt><button style={{ width: '2rem', borderRadius: '.3rem', backgroundColor: '#2468F2', color: '#FFF' }} onClick={() => this.submit()}>确定</button></dt>
+                        </dl>
+                    </section>
                 </div>
                 <style global jsx>{`
                 .signIn {
@@ -50,10 +49,11 @@ class SignIn extends Component {
                 }
                 .container {
                     height: 3rem;
-                    width: 3rem;
-                    padding: .2rem;
-                    border:1px solid #000;
-                    box-shadow: 2px 2px 4px #888888;
+                    width: 3.5rem;
+                    padding: .4rem .2rem;
+                    background: #FFF;
+                    border-radius: 4px;
+                    box-shadow: 0 10px 20px 0px rgba(0, 0, 0, .05);
                     text-align: center;
                 }
                 dt{
@@ -73,15 +73,16 @@ class SignIn extends Component {
             </div>
         )
     }
-    
 }
 
-const mapStateToProps = (state) => ({
-    
+const mapStateToProps = ((state) => {
+    return {
+        authInfo: state.admin.data
+    }
 })
-const mapDispatchToProps = (dispatch) => ({
-    doSignIn: ({username, password}) => dispatch(doSignIn({username, password}))
-})
+const mapDispatchToProps = {
+    doSignIn
+}
 
 export default connect(
     mapStateToProps,

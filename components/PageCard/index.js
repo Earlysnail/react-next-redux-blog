@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 
-class PageCard extends Component{
-    constructor(props){
+class PageCard extends Component {
+    constructor(props) {
         super(props)
         this.state = {
 
         }
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div>PageCard</div>
         )
     }
