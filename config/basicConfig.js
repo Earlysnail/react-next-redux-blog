@@ -22,6 +22,10 @@ const MENU = [
         title: '轮播图',
         url: '/playImgPage',
         childrenMenu: []
+    }, {
+        title: '滚动视差',
+        url: '/parallax',
+        childrenMenu: []
     }
 ];
 

@@ -13,14 +13,16 @@ export default function(Component){
         }
         async UNSAFE_componentWillMount () {
             const url = window.document.location.pathname;
+            const win = window;
             this.setState({
-                url
+                url,
+                win
             })
         }
         render(){
             return(
                 <Provider store={this.store}>
-                    <Component url={this.state.url} />
+                    <Component url={this.state.url} win={this.state.win}/>
                 </Provider>
             )
         }
