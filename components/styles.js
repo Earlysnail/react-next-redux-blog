@@ -76,7 +76,9 @@ export function style() {
                 border-top: .03rem solid #C7C7CC;
                 border-left: .03rem solid #C7C7CC;
             }
-            
+            #__next-prerender-indicator{
+                display:none
+            }
         `}</style>
     )
 }

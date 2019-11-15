@@ -3,6 +3,10 @@ const NAME_SPACE = {
 }
 const MENU = [
     {
+        title: '首页',
+        url: '/',
+        childrenMenu: []
+    },{
         title: '数据图',
         url: '/radar',
         childrenMenu: []

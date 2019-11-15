@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 
 const img1 = '../../static/1.jpg'
 const img5 = '../../static/5.jpg'
+const img2 = '../../static/2.jpg'
 class Parallax extends Component {
 	constructor(props) {
 		super(props)
@@ -13,20 +14,20 @@ class Parallax extends Component {
 	}
 	componentDidMount() {
 		const win = this.props.win
-		win.addEventListener('scroll',()=>{this.parallaxEffect(this.refs.img, 'position')})
-		win.addEventListener('scroll',()=>{this.parallaxEffect(this.refs.img2, 'position2')})
+		win.addEventListener('scroll', () => { this.parallaxEffect(this.refs.img, 'position') })
+		win.addEventListener('scroll', () => { this.parallaxEffect(this.refs.img2, 'position2') })
 	}
 
 	componentWillUnmount() {
 		const win = this.props.win
 		win.removeEventListener('scroll', this.parallaxEffect(this.refs.img, 'position'))
-		win.addEventListener('scroll',()=>{this.parallaxEffect(this.refs.img2, 'position2')})
+		win.addEventListener('scroll', () => { this.parallaxEffect(this.refs.img2, 'position2') })
 	} Ï
 	parallaxEffect = (dom, pos) => {
 		const win = this.props.win
-		var domHeight = dom.offsetHeight;     																		//dom元素的高度
+		var domHeight = dom && dom.offsetHeight || 700;     																		//dom元素的高度
 		var windowHeight = win.innerHeight;  																			//窗口的可见高度
-		var domOffsetTop = dom.offsetTop;																					//dom元素距离顶部高度
+		var domOffsetTop = dom && dom.offsetTop || 900;																					//dom元素距离顶部高度
 		var scrollTop = win.document.documentElement.scrollTop;    								//滚动条滚动的高度
 		var startScrollTop = scrollTop + windowHeight;														//滚动条滚动的高度 + 窗口的可见高度
 		var endScrollTop = scrollTop - domHeight;    														//滚动条滚动的高度 - dom元素的高度
@@ -36,10 +37,10 @@ class Parallax extends Component {
 			// var pixelScrolled = startScrollTop - domOffsetTop;    			
 			var percentScrolled = pixelScrolled / visibleScrollValue;
 			var deltaTopScrollVal = 0;
-				deltaTopScrollVal = percentScrolled * 100;   						 //向下滚动
-				this.setState({
-					[pos]: deltaTopScrollVal
-				})
+			deltaTopScrollVal = percentScrolled * 100;   						 //向下滚动
+			this.setState({
+				[pos]: deltaTopScrollVal
+			})
 		}
 	}
 	render() {
@@ -49,56 +50,71 @@ class Parallax extends Component {
 					<h1>滚动视觉差</h1>
 				</div>
 				<div className="bg-attachment" ref="img">
+					<div className="shadow">asda</div>
+				</div>
+				<div className="header">
+					<h1 style={{ height: '2rem' }}>哈哈哈哈哈哈哈</h1>
+				</div>
+				<div className="bg-attachment2" ref="img2">
 					<div className="shadow"></div>
 				</div>
 				<div className="header">
-					<h1 style={{ height: '6rem' }}>哈哈哈哈哈哈哈</h1>
+					<h1 style={{ height: '2rem' }}>哈哈哈哈哈哈哈</h1>
 				</div>
-				<div className="bg-attachment div2" ref="img2">
-					<div className="shadow"></div>
-				</div>
-				{/* // transition: width 2s, height 2s, transform 2s; */}
+
+
 				<style jsx>{`
             #parallax{
-                width: 100%;
-                margin:auto
+							width: 100%;
+							margin: auto;
             }
             .header{
-                background:#fff;
-                overflow: hidden;
-                width:100%;
-            }
-            .header h1{
-                width:100%;
-                height: 9rem;
-                display:flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .bg-attachment{
-								background: url(${img5}) center center no-repeat;
-                box-shadow:0 7px 18px #000000 inset,0 -7px 18px #000000 inset;
-                -webkit-box-shadow:0 7px 18px #000000 inset,0 -7px 18px #000000 inset;
-                -moz-box-shadow: 0 7px 18px #000000 inset,0 -7px 18px #000000 inset;
-                -o-box-shadow: 0 7px 18px #000000 inset,0 -7px 18px #000000 inset;
-                -ms-box-shadow: 0 7px 18px #000000 inset,0 -7px 18px #000000 inset;
-								background-attachment: fixed;
-								background-position:50% ${this.state.position}%;
+							background: #fff;
+							overflow: hidden;
+							width:100%;
 							
             }
-            .bg-attachment .shadow{
-                width:100%;
-                height:7rem;
-                overflow:hidden;
-                margin:auto;
+            .header h1{
+							width:100%;
+							height: 9rem;
+							display:flex;
+							justify-content: center;
+							align-items: center;
             }
-            .div2{
-                background:url(${img1}) center center no-repeat;
-								background-attachment: fixed;
-								background-position:50% ${this.state.position2}%;
+            .bg-attachment{
+							background: url(${img5}) center center no-repeat;
+							box-shadow:0 7px 18px #000000 inset,0 -7px 18px #000000 inset;
+							-webkit-box-shadow:0 7px 18px #000000 inset,0 -7px 18px #000000 inset;
+							-moz-box-shadow: 0 7px 18px #000000 inset,0 -7px 18px #000000 inset;
+							-o-box-shadow: 0 7px 18px #000000 inset,0 -7px 18px #000000 inset;
+							-ms-box-shadow: 0 7px 18px #000000 inset,0 -7px 18px #000000 inset;
+							background-attachment: fixed;
+							background-position:50% ${this.state.position}%;
+            }
+            .bg-attachment .shadow{
+							width:100%;
+							height:7rem;
+							overflow:hidden;
+							margin:auto;
+            }
+            .bg-attachment2{
+							background: url(${img5}) center center no-repeat;
+							box-shadow:0 7px 18px #000000 inset,0 -7px 18px #000000 inset;
+							-webkit-box-shadow:0 7px 18px #000000 inset,0 -7px 18px #000000 inset;
+							-moz-box-shadow: 0 7px 18px #000000 inset,0 -7px 18px #000000 inset;
+							-o-box-shadow: 0 7px 18px #000000 inset,0 -7px 18px #000000 inset;
+							-ms-box-shadow: 0 7px 18px #000000 inset,0 -7px 18px #000000 inset;
+							background-attachment: fixed;
+							background-position:50% ${this.state.position2}%;
+						}
+						.bg-attachment2 .shadow{
+							width:100%;
+							height:7rem;
+							overflow:hidden;
+							margin:auto;
             }
 						`}
-						
+
 				</style>
 			</div>
 

@@ -3,72 +3,252 @@ const img1 = "../../static/1.jpg";
 const img2 = "../../static/2.jpg";
 const img3 = "../../static/3.jpg";
 const img4 = "../../static/4.jpg";
+const array = [
+	{
+		name: '马文涛',
+		img: img1,
+		desc: '前端工程师'
+	}, {
+		name: '张璞',
+		img: img2,
+		desc: '软件工程师'
+	}, {
+		name: '孙立伟',
+		img: img3,
+		desc: '安卓工程师'
+	}, {
+		name: '陈少波',
+		img: img4,
+		desc: '软件工程师'
+	}, {
+		name: '马文涛',
+		img: img1,
+		desc: '前端工程师'
+	}, {
+		name: '张璞',
+		img: img2,
+		desc: '软件工程师'
+	}, {
+		name: '孙立伟',
+		img: img3,
+		desc: '安卓工程师'
+	}, {
+		name: '陈少波',
+		img: img4,
+		desc: '软件工程师'
+	}, {
+		name: '马文涛',
+		img: img1,
+		desc: '前端工程师'
+	}, {
+		name: '张璞',
+		img: img2,
+		desc: '软件工程师'
+	}, {
+		name: '孙立伟',
+		img: img3,
+		desc: '安卓工程师'
+	}, {
+		name: '陈少波',
+		img: img4,
+		desc: '软件工程师'
+	}
+]
+
 class Manage extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
+			list: []
 		}
 	}
-	render() {
-		const array = [
-			{
-				name: '马文涛',
-				img: img1,
-				desc: '前端工程师'
-			}, {
-				name: '张璞',
-				img: img2,
-				desc: '软件工程师'
-			}, {
-				name: '孙立伟',
-				img: img3,
-				desc: '安卓工程师'
-			}, {
-				name: '陈少波',
-				img: img4,
-				desc: '软件工程师'
+	componentDidMount() {
+		var arr = [];
+		var newArray = [];
+		array.forEach((ele, index) => {
+			arr.push(ele);
+			if ((index + 1) % 4 == 0) {
+				newArray.push(arr);
+				arr = [];
 			}
+		})
+		var list = [
+			{
+				year: '2018',
+				desc: '18届毕业生',
+				members: newArray,
+				color: '#3564f3',
+				mark: false
+			}, {
+				year: '2019',
+				desc: '19届毕业生',
+				members: newArray,
+				color: '#345344',
+				mark: false
+			}, {
+				year: '2020',
+				desc: '20届毕业生',
+				members: newArray,
+				color: '#634343',
+				mark: false
+			},
 		]
+	}
+	handleShow = (list,index) => {
+		list[index].mark = true;
+		this.setState({
+			list
+		})
+	}
+	handleQuitShow = (list, index) => {
+		list[index].mark = false;
+		this.setState({
+			list
+		})
+	}
+	render() {
+		const { list } = this.state
 		return (
 			<div className="manage">
-				<div className="menber">
-					{
-						array.map((item, index) => {
+				<div className="timeline">
+					<ul>{
+						list.map((element, listKey) => {
 							return (
-								<div className="wrap">
-									<div className="head">
-										<div className="img">
-											<img src={item.img}></img>
+								<li key={listKey}>
+									<div className="bullet" style={{ background: `${element.color}` }}></div>
+									<div className="time">{element.year}</div>
+									<div className="descx">
+										<h3>{element.desc}</h3>
+										<div className="people">
+											{
+												element.members.map((ele, elementKey) => {
+													return (
+														element.mark || elementKey == 0 ? <div className="row" key={elementKey}>
+															{
+																ele.map((item, itemKey) => {
+																	return (
+																		<div id="wrap" key={itemKey}>
+																			<div className="head">
+																				<div className="img">
+																					<img src={item.img}></img>
+																				</div>
+																				<h3>{item.name}</h3>
+																			</div>
+																			<div className="desc" style={{ display: "block" }}>{item.desc}</div>
+																		</div>
+																	)
+																})
+															}
+
+														</div>
+															: ''
+													)
+												})
+											}
+											{
+												element.mark ? <div style={{ float: 'right', cursor: 'pointer' }} onClick={this.handleQuitShow(list,listKey)}>{'<<<<<<'}</div> : <div style={{ float: 'right', cursor: 'pointer' }} onClick={this.handleShow(list,listKey)}>>>>>>></div>
+											}
+											{/* {
+														<div style={{display: "flex", alignItems: 'center'}}><span>》》》</span></div>
+													} */}
 										</div>
-										<h3>{item.name}</h3>
 									</div>
-									<div className="desc">{item.desc}</div>
-								</div>)
+								</li>
+							)
 						})
 					}
-				</div>
-				<div className="project">
-					<div className="sub-header">
-						<div><i>@</i>开发社区</div>
-					</div>
-					<a target="_blank" href="http://www.baidu.com">
-						<div className="item">
-							<div className="logo">
-								<img src={array[3].img} />
-								<span className="title">Github</span>
-							</div>
-							<div className="desck">
-								<span style={{ padding: '0 .1rem' }}>这是一个前端项目</span>
-							</div>
-						</div>
-					</a>
-				</div>
+					</ul>
+				</div >
 				<style jsx>{`
+								.manage{
+									padding-top: .7rem;
+									padding-left: .3rem; 
+								}
+                .timeline ul{
+                    padding: .1rem 0 0 .2rem;
+                    position: relative;
+                }
+                .timeline ul::before{
+                    content: ' ';
+                    height: 100%;
+                    width: .01rem;
+                    background-color: grey;
+                    position: absolute;
+                    top: 0;
+                    left: .35rem;
+                    z-index: -1;
+                }
+                .timeline li > div{
+										display: inline-block;
+                    margin: .1rem 0;
+                    vertical-align: top;
+                  }
+                  .timeline .bullet {
+                    width: .3rem;
+                    height: .3rem;
+                    box-sizing: border-box;
+                    border-radius: 50%;
+                    background: #3564f3;
+                    z-index: 1;
+                    margin-right: .1rem;
+                  }
+                  .timeline .time {
+										width: 90%;
+										font-size: .2rem;
+										padding-left: .1rem;
+                  }
+                  .timeline .descx {
+										padding-left: .4rem;
+                  }
+                  .timeline h3 {
+                    font-size: 0.09rem;
+                    font-weight: 400;
+                    margin: 0;
+                  }
+                  
+                  .timeline h4 {
+                    margin: 0;
+                    font-size: 0.07rem;
+                    font-weight: 400;
+                    color: grey;
+									}
+									.timeline .people{
+										height: auto;
+										margin: .1rem 0;
+										transition: height 3s ease;
+									}
+									.timeline .people .row{
+										display: flex;
+										justify-content: center;
+                    width: 1000px;
+									}
+                  .timeline .people a{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                  }
+                }
+                
+                .credits, .video{
+                  position: absolute;
+                  bottom:10px;
+                  color: grey;
+                  font-size: 100%;
+                  text-decoration: underline;
+                }
+                
+                .credits {
+                  left: 10px;
+                }
+                
+                .video{
+                  right: 10px;
+                }
                 .menber{
                     display:flex;
                     justify-content: center;
                 }
-                .wrap{
+                #wrap{
                     width: 3rem;
                     margin: .3rem .1rem;
                     background-color: #f5f8fa;
@@ -77,7 +257,7 @@ class Manage extends Component {
                     text-align: center;
                     transition: all .3s ease;
                 }
-                .wrap:hover {
+                #wrap:hover {
                     transform: translateY(-6px);
                     -webkit-transform: translateY(-6px);
                     -moz-transform: translateY(-6px);
@@ -175,7 +355,7 @@ class Manage extends Component {
                 }
                 `}
 				</style>
-			</div>
+			</div >
 		)
 	}
 }
