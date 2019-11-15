@@ -16,19 +16,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/error": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
     "/index": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
     "/manage": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/playImgPage": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
